@@ -1,0 +1,35 @@
+ <!-- Display expenses -->
+ <div class="container mt-5">
+  <h2 class="text-center">Expenses</h2>
+  
+  <% if (Expense && Expense.length > 0) { %>
+    <!-- Card for displaying first and last name -->
+    <div class="card mb-4">
+      <div class="card-body text-center">
+        <h5 class="card-title">Name: <%= Expense[0].first_name %> <%= Expense[0].last_name %></h5>
+      </div>
+    </div>
+
+    <!-- Table for displaying expenses -->
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Expense Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Expense.forEach(expense => { %>
+          <tr>
+            <td><%= expense.amount %></td>
+            <td><%= expense.date %></td>
+            <td><%= expense.category_name %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p class="text-center">No expenses found.</p>
+  <% } %>
+</div>

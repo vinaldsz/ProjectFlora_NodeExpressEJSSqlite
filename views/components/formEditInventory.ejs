@@ -1,0 +1,53 @@
+<form
+  action="<%= '/seller/' + Inventory.farmer_id + '/editInventory/' + Inventory.product_id + Inventory.date %>"
+  method="POST"
+>
+  <!-- Quantity Field -->
+  <div>
+    <label class="form-label">
+      Quantity:
+      <input
+        class="form-control"
+        type="text"
+        name="quantity_in_bundles"
+        value="<%= Inventory.quantity_in_bundles %>"
+      />
+    </label>
+  </div>
+
+  <!-- Date Field -->
+  <div>
+    <label class="form-label">
+      Date:
+      <input
+        class="form-control"
+        type="date"
+        name="date"
+        value="<%= Inventory.date %>" 
+        disabled
+      />
+    </label>
+  </div>
+
+  <!-- Product ID Field (hidden) -->
+  <input
+    type="hidden"
+    name="product_id"
+    value="<%= Inventory.product_id %>"
+  />
+
+  <!-- Farmer ID Field (hidden) -->
+  <input
+    type="hidden"
+    name="farmer_id"
+    value="<%= Inventory.farmer_id %>"
+  />
+
+  <button type="submit" class="btn btn-primary">Edit</button>
+  <a
+    class="btn btn-danger"
+    href="<%= '/seller/' + Inventory.farmer_id + '/delete' %>"
+  >
+    Delete
+  </a>
+</form>

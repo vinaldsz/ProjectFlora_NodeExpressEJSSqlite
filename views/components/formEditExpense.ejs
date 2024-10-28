@@ -1,0 +1,46 @@
+<form
+  action=" <%= '/seller/'+ Expense.expense_id +'/editExpense' %>" METHOD="POST">
+    <input type="hidden" name="expense_id" value="<%= Expense.expense_id %>" />
+
+  <div>
+    <label class="form-label">
+      Expense ID:
+      <input
+        class="form-control"
+        type="number"
+        value="<%= Expense.expense_id %>"
+        disabled
+      />
+    </label>
+  </div>
+  <div>
+    <label class="form-label">
+      Amount:
+      <input
+        class="form-control"
+        type="text"
+        name="amount"
+        value="<%= Expense.Amount%>"  
+      />
+    </label>
+  </div>
+
+  <div>
+    <label class="form-label">
+      Date:
+      <input
+        class="form-control"
+        type="date"
+        name="date"
+        value="<%= Expense.date %>"
+      />
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Edit</button>
+  <a
+    class="btn btn-danger"
+    href="<%= '/seller/' + Expense.expense_id + '/deleteExpense/' %>"
+    >Delete</a
+  >
+</form>

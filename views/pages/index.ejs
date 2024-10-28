@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../templates/head.ejs") %>
+  <body>
+    <%- include("../templates/navBar.ejs") %>
+
+    <div class="container">
+      <h1></h1>
+
+      <% if (msg) { %>
+        <div class="alert alert-primary">
+          <%= msg %>
+        </div>
+      <% } %>
+
+      <div class="container text-center mt-5">
+        <div class="card shadow-lg p-3 mb-3">
+          <h1>Welcome to Flora</h1>
+        </div>
+          <p>Please select your role:</p>
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <a href="/customer" class="btn btn-primary btn-lg">Customer</a>
+          </div>
+          <div class="col-md-6">
+            <button 
+              type="button" 
+              class="btn btn-success btn-lg" 
+              data-bs-toggle="modal" 
+              data-bs-target="#sellerModal">
+              Seller
+            </button>
+          </div>
+        </div>
+      </div>
+
+    <!-- Seller Modal -->
+    <div class="modal fade" id="sellerModal" tabindex="-1" aria-labelledby="sellerModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sellerModalLabel">Are you a registered seller?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you an existing registered seller?</p>
+            <div class="d-flex justify-content-between">
+              <a href="/seller" class="btn btn-primary">Yes, I am registered</a>
+              <a href="/registerSeller" class="btn btn-secondary">No, I need to register</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card hover-card text-center p-4">
+            <h5 class="card-title">Our Vision</h5>
+            <p class="card-text">Creating a sustainable, accessible flower marketplace for everyone.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card hover-card text-center p-4" >
+            <h5 class="card-title">Our Vision</h5>
+            <p class="card-text">Creating a sustainable, accessible flower marketplace for everyone.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card hover-card text-center p-4">
+            <h5 class="card-title">Our Services</h5>
+            <p class="card-text">Browse and purchase flowers from the nearest vendors with ease.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

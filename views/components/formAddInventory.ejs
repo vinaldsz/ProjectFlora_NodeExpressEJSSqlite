@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <h2 class="text-center">Add Inventory</h2>
+    
+    <form action="<%='/seller/'+ farmer_id + '/addInventory' %>" method="POST" class="mt-4">
+      <div class="mb-3">
+        <label for="Quantity" class="form-label">Quantity</label>
+        <input type="number" class="form-control" id="amount" name="quantity_in_bundles" required placeholder="Enter quantity of product">
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" id="category" name="product_name" required>
+          <option value="" disabled selected>Select a product</option>
+          <option value="White Jasmine">White Jasmine</option>
+          <option value="Pink Jasmine">Pink Jasmine</option>
+          <option value="Crossandra">Crossandra</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="Created_at" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" name="created_at" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+  </div>

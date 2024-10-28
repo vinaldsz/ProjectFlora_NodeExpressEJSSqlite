@@ -1,0 +1,46 @@
+/* Show it is fixed to the top */
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+  background-image: url("/images/bg_image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 200px; /* Adjust this value as needed */
+  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+  backdrop-filter: blur(5px); /* Optional: adds a blur effect behind the card */
+  border-radius: 15px; /* Rounded corners */
+}
+
+.card-img-top {
+  height: 100px; /* Set a fixed height for images */
+  object-fit: cover; /* Ensure images cover the area without distortion */
+  border-top-left-radius: 15px; /* Match rounded corners */
+  border-top-right-radius: 15px; /* Match rounded corners */
+}
+
+.hover-card:hover {
+  transform: scale(1.00);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card a {
+  opacity:  0.8;
+}
+
+.table {
+  text-align: center;
+  justify-content: left;
+  width: 100%; 
+  }
+  
+
+.card:hover a, .card a:focus {
+  opacity:  100;
+}

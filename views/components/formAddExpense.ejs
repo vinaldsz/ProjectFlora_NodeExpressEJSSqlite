@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <h2 class="text-center">Add Expense</h2>
+    
+    <form action="<%='/seller/'+ farmer_id + '/addExpense' %>" method="POST" class="mt-4">
+      <div class="mb-3">
+        <label for="amount" class="form-label">Amount</label>
+        <input type="number" class="form-control" id="amount" name="amount" required placeholder="Enter amount">
+      </div>
+  
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" class="form-control" id="date" name="date" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" id="category" name="category_name" required>
+          <option value="" disabled selected>Select a category</option>
+          <option value="Machinery and Tools">Machinery and Tools</option>
+          <option value="One time installation">One time installation</option>
+          <option value="Fertilizers and Soil Amendments">Fertilizers and Soil Amendments</option>
+          <option value="Pesticides and Herbicides">Pesticides and Herbicides</option>
+          <option value="Labor Cost">Labor Cost</option>
+          <option value="Water and Electricity">Water and Electricity</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Add Expense</button>
+    </form>
+  </div>
