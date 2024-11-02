@@ -8,6 +8,10 @@ router.get("/", async function (req, res, next) {
   res.redirect("/references");
 });
 
+router.get("/about", async function (req, res, next) {
+  res.render("./pages/about");
+})
+
 // Route to handle seller login/register
 router.get("/seller", (req, res) => {
   const msg = req.query.msg || null;
@@ -209,6 +213,7 @@ router.post("/seller/:farmer_id/addInventory", async (req, res, next) => {
 
 router.get("/seller/:expense_id/editExpense", async (req, res, next) => {
   const expense_id = req.params.expense_id;
+  console.log("👉 expense_id", expense_id);
   const query = req.query.q || "";
   const page = +req.query.page || 1;
   const pageSize = +req.query.pageSize || 24;
@@ -216,7 +221,7 @@ router.get("/seller/:expense_id/editExpense", async (req, res, next) => {
   try {
     console.log("Expense_id in get editExpense", expense_id);
     let Expense = await myDb.getExpensesByExpenseId(expense_id);
-    console.log("Expense from get", Expense);
+    console.log("🟢 Expense from get", Expense);
     res.render("./pages/editExpense", { 
       Expense, 
       query, 
@@ -228,15 +233,27 @@ router.get("/seller/:expense_id/editExpense", async (req, res, next) => {
     next(err);
   }
 });
+
 router.post("/seller/:expense_id/editExpense", async (req, res, next) => {
+  console.log("👻 Body", req.body)
   const { expense_id, amount, date } = req.body;
   try {
+    
     console.log("Expense_id in update", expense_id);
-    let UpdateExpense = await myDb.updateExpensesById(233, amount, date);
+    console.log("amount in update", amount);
+    console.log("Date in update", date);
+
+    let UpdateExpense = await myDb.updateExpensesById(expense_id, amount, date);
     console.log("*******Update", UpdateExpense);
 
+    let Farmer_Id = await myDb.getFarmerByExpenseId(expense_id);
+    console.log("farmer_id", Farmer_Id);
+
+
+    console.log("farmer_id[0]",Farmer_Id[0].farmer_id);
+
     if (UpdateExpense && UpdateExpense.changes==1) {
-      res.redirect("/references/?msg=Expense Updated");
+      res.redirect(`/seller/sellerOptions?farmer_id=${Farmer_Id[0].farmer_id}`);
     } else {
       res.redirect("/seller/SellerOptions/?msg=Error Updating");
     }
@@ -269,6 +286,8 @@ router.get("/seller/:farmer_id/deleteInventory", async (req, res, next) => {
   const farmer_id = req.params.farmer_id;
   const inventory = req.body;
 
+  console.log("➡️ Index.js", farmer_id);
+  console.log("➡️ Index.js", inventory);
   try {
     let deleteResult = await myDb.deleteInventoryById(farmer_id, inventory);
     console.log("delete", deleteResult);
@@ -292,7 +311,7 @@ router.get("/seller/:farmer_id/editInventory", async (req, res, next) => {
   const msg = req.query.msg || null;
   try {
     let Inventory = await myDb.getInventoryByFarmerId(farmer_id);
-    console.log("Expense", Inventory);
+    console.log("Inventory", Inventory);
     res.render("./pages/editInventory", { 
       Inventory, 
       query, 

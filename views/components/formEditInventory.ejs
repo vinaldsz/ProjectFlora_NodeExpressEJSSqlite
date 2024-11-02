@@ -6,19 +6,21 @@
   <div>
     <label class="form-label">
       Quantity:
+    </label>
       <input
         class="form-control"
         type="text"
         name="quantity_in_bundles"
         value="<%= Inventory.quantity_in_bundles %>"
       />
-    </label>
+    
   </div>
 
   <!-- Date Field -->
   <div>
     <label class="form-label">
       Date:
+    </label>
       <input
         class="form-control"
         type="date"
@@ -26,7 +28,6 @@
         value="<%= Inventory.date %>" 
         disabled
       />
-    </label>
   </div>
 
   <!-- Product ID Field (hidden) -->
@@ -44,10 +45,4 @@
   />
 
   <button type="submit" class="btn btn-primary">Edit</button>
-  <a
-    class="btn btn-danger"
-    href="<%= '/seller/' + Inventory.farmer_id + '/delete' %>"
-  >
-    Delete
-  </a>
 </form>

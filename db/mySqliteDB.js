@@ -178,9 +178,12 @@ export async function getExpensesByExpenseId(expense_id) {
     ON e.expense_category_id = ec.expense_category_id 
     where expense_id = @expense_id`);
 
-  console.log(stmt);
+    const params = {
+      "@expense_id": expense_id
+    };
+  
     try {
-      return await stmt.all(expense_id); // Return all rows matching the query
+      return await stmt.get(params);
     } finally {
       await stmt.finalize();
       db.close();
@@ -217,16 +220,20 @@ export async function updateExpensesById(expense_id, amount, date) {
   });
   const stmt = await db.prepare(`UPDATE Expense
     SET
-      amount = ?,
-      date = ?
+      amount = @amount,
+      date = @date
     WHERE 
-      expense_id = ?`);
+      expense_id = @expense_id`);
   
-  console.log("Statement prepared", stmt);
+  const params = {
+    "@amount": amount,
+    "@date": date,
+    "@expense_id": expense_id,
+
+  }
 
   try {
-    const result = await stmt.run(expense_id,amount,date);
-    console.log("After update", result);
+    const result = await stmt.run(params);
     return result;
   }finally { 
     await stmt.finalize();
@@ -317,6 +324,8 @@ export async function deleteInventoryById(farmer_id, inventory) {
     filename: "./db/ProjectFlora.db",
     driver: sqlite3.Database,
   });
+
+  console.log("👉 farmer_id", farmer_id);
 
   const stmt = await db.prepare(`
     DELETE FROM Harvest

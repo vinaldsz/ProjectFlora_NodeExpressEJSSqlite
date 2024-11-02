@@ -11,30 +11,29 @@
       </div>
   
       <!-- Table for displaying expenses -->
-    <div class="container mt-8 text-center"></div>
       <table class="table table-striped mt-4 text-center">
         <thead>
           <tr>
-            <th style="padding: 10px;">Product Name</th>
-            <th style="padding: 10px;">Quantity</th>
-            <th style="padding: 10px;">Date</th>
-            <th style="padding: 10px;">Action</th>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Date</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           <% Inventory.forEach(item => { %>
             <tr>
-              <td style="padding: 10px;"><%= item.product_name %></td>
-              <td style="padding: 10px;"><%= item.created_at %></td>
-              <td style="padding: 10px;"><%= item.quantity_in_bundles %></td>
+              <td><%= item.product_name %></td>
+              <td><%= item.created_at %></td>
+              <td><%= item.quantity_in_bundles %></td>
               <td style="padding: 10px;">
                 <a
                   class="btn btn-outline-primary"
-                  href="<%= '/seller/' + Inventory.farmer_id + '/editInventory/' %>"
+                  href="<%= '/seller/' + item.farmer_id + '/editInventory/' %>"
                   >Edit</a>
                 <a
                   class="btn btn-outline-danger"
-                  href="<%= '/seller/' + Inventory.farmer_id + '/deleteInventory' %>"
+                  href="<%= '/seller/' + item.farmer_id + '/deleteInventory' %>"
                   >Delete</a>
               </td>
             </tr>

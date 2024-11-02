@@ -1,46 +1,41 @@
 <form
-  action=" <%= '/seller/'+ Expense.expense_id +'/editExpense' %>" METHOD="POST">
-    <input type="hidden" name="expense_id" value="<%= Expense.expense_id %>" />
-
+  action=" <%= '/seller/'+ Expense.expense_id +'/editExpense' %>" method="POST"
+  >
   <div>
     <label class="form-label">
       Expense ID:
+    </label>
       <input
         class="form-control"
-        type="number"
+        type="text"
+        name="expense_id"
         value="<%= Expense.expense_id %>"
-        disabled
+        readonly
       />
-    </label>
   </div>
   <div>
     <label class="form-label">
       Amount:
-      <input
-        class="form-control"
-        type="text"
-        name="amount"
-        value="<%= Expense.Amount%>"  
-      />
     </label>
+    <input
+      class="form-control"
+      type="text"
+      name="amount"
+      value="<%= Expense.amount%>"  
+    />    
   </div>
 
   <div>
     <label class="form-label">
       Date:
-      <input
-        class="form-control"
-        type="date"
-        name="date"
-        value="<%= Expense.date %>"
-      />
     </label>
+    <input
+      class="form-control"
+      type="date"
+      name="date"
+      value="<%= Expense.date %>"
+    />
   </div>
 
   <button type="submit" class="btn btn-primary">Edit</button>
-  <a
-    class="btn btn-danger"
-    href="<%= '/seller/' + Expense.expense_id + '/deleteExpense/' %>"
-    >Delete</a
-  >
 </form>
